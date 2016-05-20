@@ -103,6 +103,8 @@ func scanFile(filename string) error {
 		return kerr.Wrap("WTIOTIMQDV", err)
 	}
 
+	gopathdir := gopackages.GetCurrentGopath(os.Getenv("GOPATH"), filepath.Dir(filename))
+
 	pkg, err := gopackages.GetPackageFromDir(os.Getenv("GOPATH"), filepath.Dir(filename))
 	if err != nil {
 		return kerr.Wrap("PJFJLKNVBO", err)
@@ -128,7 +130,7 @@ func scanFile(filename string) error {
 		}
 	}
 
-	relfilename, err := filepath.Rel(filepath.Join(baseDir, ".."), filename)
+	relfilename, err := filepath.Rel(filepath.Join(gopathdir, "src"), filename)
 	if err != nil {
 		return kerr.Wrap("WSDPGDGMDH", err)
 	}

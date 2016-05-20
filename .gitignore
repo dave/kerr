@@ -24,3 +24,4 @@ _testmain.go
 .DS_Store
 *.iml
 .idea/
+coverage.out
