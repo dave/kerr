@@ -1,11 +1,11 @@
-package kerrsource
+package ksrc
 
 import (
 	"testing"
 
 	"regexp"
 
-	"kego.io/kerr/assert"
+	"github.com/davelondon/ktest/assert"
 )
 
 func TestSource(t *testing.T) {
@@ -13,9 +13,9 @@ func TestSource(t *testing.T) {
 	_, err := Process("/foo.go", []byte("foo"))
 	assert.IsError(t, err, "UIXBVGAPWL")
 
-	in := `package kerrsource
+	in := `package ksrc
 
-import "kego.io/kerr"
+import "github.com/davelondon/kerr"
 
 func foo() {
 	var err error
@@ -30,9 +30,9 @@ func foo() {
 	assert.Regexp(t, regexp.MustCompile(`kerr\.New\(\"[A-Z]{10}\", \"foo\", \"bar\"\)\n`), string(out))
 	assert.Regexp(t, regexp.MustCompile(`kerr\.Wrap\(\"[A-Z]{10}\", err\)\n`), string(out))
 
-	in = `package kerrsource
+	in = `package ksrc
 
-import "kego.io/kerr"
+import "github.com/davelondon/kerr"
 
 func foo() {
 	fmt.Sprint("")

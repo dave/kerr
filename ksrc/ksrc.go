@@ -1,4 +1,4 @@
-package kerrsource // import "kego.io/kerr/kerrsource"
+package ksrc
 
 // ke: {"package": {"complete": true}}
 
@@ -11,7 +11,7 @@ import (
 
 	"bytes"
 
-	"kego.io/kerr"
+	"github.com/davelondon/kerr"
 )
 
 func Process(filename string, in []byte) (out []byte, err error) {

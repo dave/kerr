@@ -1,9 +1,9 @@
-package kerrsource
+package ksrc
 
 import (
 	"testing"
 
-	"kego.io/kerr/assert"
+	"github.com/davelondon/ktest/assert"
 )
 
 func TestIsId(t *testing.T) {

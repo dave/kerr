@@ -1,4 +1,4 @@
-package kerrsource
+package ksrc
 
 import (
 	"bytes"

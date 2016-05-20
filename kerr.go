@@ -1,5 +1,5 @@
 // Package kerr is an error with a unique ID
-package kerr // import "kego.io/kerr"
+package kerr
 
 // ke: {"package": {"complete": true}}
 
