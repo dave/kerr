@@ -5,10 +5,8 @@ package kerr
 
 import (
 	"fmt"
-	"os"
 	"runtime"
 
-	"path/filepath"
 	"strings"
 )
 
@@ -98,7 +96,7 @@ func get(id string, inner error, descriptionFormatAndArgs ...interface{}) Struct
 // Error returns a string of the error
 func (e Struct) Error() string {
 	if e.Inner == nil {
-		return fmt.Sprintf("\n%s error in %s:%d %s: %s.\n", e.Id, getRelPath(e.File), e.Line, e.Function, e.Description)
+		return fmt.Sprintf("\n%s error%s: %s\n", e.Id, formatLocation(e), e.Description)
 	}
 	inner := e.Inner.Error()
 	if strings.HasPrefix(inner, "\n") {
@@ -109,20 +107,7 @@ func (e Struct) Error() string {
 	if len(e.Description) > 0 {
 		description = ": " + e.Description
 	}
-	return fmt.Sprintf("\n%s error in %s:%d %s%s: \n%v", e.Id, getRelPath(e.File), e.Line, e.Function, description, inner)
-}
-
-func getRelPath(filePath string) string {
-	wd, err := os.Getwd()
-	if err != nil {
-		// ke: {"block": {"notest": true}}
-		return filePath
-	}
-	out, err := filepath.Rel(wd, filePath)
-	if err != nil {
-		return filePath
-	}
-	return out
+	return fmt.Sprintf("\n%s error%s%s: \n%v", e.Id, formatLocation(e), description, inner)
 }
 
 // ErrorId returns the unique id of the error
