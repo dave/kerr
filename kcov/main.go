@@ -176,6 +176,7 @@ func exportProfiles(profiles map[string]*Profile) []*cover.Profile {
 }
 
 func checkComplete(profiles map[string]*Profile, source *scanner.Source) error {
+	var errors []string
 	for _, profile := range profiles {
 		if profile.Exclude {
 			continue
@@ -188,10 +189,14 @@ func checkComplete(profiles map[string]*Profile, source *scanner.Source) error {
 					continue
 				}
 				if block.Count == 0 {
-					return kerr.New("GNLYPXHTNF", "Untested code in %s:%d-%d", profile.FileName, block.StartLine, block.EndLine)
+					errors = append(errors, fmt.Sprintf("Untested code in %s:%d-%d", profile.FileName, block.StartLine, block.EndLine))
 				}
 			}
 		}
+	}
+	if len(errors) > 0 {
+		fmt.Println(strings.Join(errors, "\n"))
+		return kerr.New("GNLYPXHTNF", "Untested code in %d places", len(errors))
 	}
 	return nil
 }
