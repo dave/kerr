@@ -6,6 +6,7 @@ import (
 	"regexp"
 
 	"github.com/davelondon/ktest/assert"
+	"github.com/davelondon/ktest/require"
 )
 
 func TestSource(t *testing.T) {
@@ -25,7 +26,7 @@ func foo() {
 }
 `
 	out, err := Process("/foo.go", []byte(in))
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	assert.Regexp(t, regexp.MustCompile(`kerr\.New\(\"[A-Z]{10}\"\)\n`), string(out))
 	assert.Regexp(t, regexp.MustCompile(`kerr\.New\(\"[A-Z]{10}\", \"foo\", \"bar\"\)\n`), string(out))
 	assert.Regexp(t, regexp.MustCompile(`kerr\.Wrap\(\"[A-Z]{10}\", err\)\n`), string(out))
@@ -39,7 +40,7 @@ func foo() {
 }
 `
 	out, err = Process("/foo.go", []byte(in))
-	assert.NoError(t, err)
+	require.NoError(t, err)
 	assert.Equal(t, in, string(out))
 
 }

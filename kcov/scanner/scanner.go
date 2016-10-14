@@ -217,7 +217,7 @@ func (v *visitor) Visit(node ast.Node) (w ast.Visitor) {
 						if strings.HasPrefix(c.Text, "// ke: ") {
 							val := struct{ Notest bool }{}
 							err := json.UnmarshalPlain([]byte(c.Text[7:]), &val)
-							assert.NoError(v.t, err)
+							require.NoError(v.t, err)
 							if val.Notest {
 								def := getPkgDef(v.pkg)
 								def.notest = true
