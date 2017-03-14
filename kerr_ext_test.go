@@ -5,8 +5,8 @@ import (
 
 	"fmt"
 
-	"github.com/davelondon/kerr"
-	"github.com/davelondon/ktest/assert"
+	"github.com/dave/kerr"
+	"github.com/dave/ktest/assert"
 )
 
 func TestErr(t *testing.T) {

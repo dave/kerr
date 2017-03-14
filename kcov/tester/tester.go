@@ -13,8 +13,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/davelondon/gopackages"
-	"github.com/davelondon/kerr"
+	"github.com/dave/gopackages"
+	"github.com/dave/kerr"
 	"golang.org/x/tools/cover"
 )
 

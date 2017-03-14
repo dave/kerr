@@ -10,8 +10,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/davelondon/kerr"
-	"github.com/davelondon/kerr/ksrc"
+	"github.com/dave/kerr"
+	"github.com/dave/kerr/ksrc"
 	"golang.org/x/tools/imports"
 )
 

@@ -5,8 +5,8 @@ import (
 
 	"regexp"
 
-	"github.com/davelondon/ktest/assert"
-	"github.com/davelondon/ktest/require"
+	"github.com/dave/ktest/assert"
+	"github.com/dave/ktest/require"
 )
 
 func TestSource(t *testing.T) {
@@ -16,7 +16,7 @@ func TestSource(t *testing.T) {
 
 	in := `package ksrc
 
-import "github.com/davelondon/kerr"
+import "github.com/dave/kerr"
 
 func foo() {
 	var err error
@@ -33,7 +33,7 @@ func foo() {
 
 	in = `package ksrc
 
-import "github.com/davelondon/kerr"
+import "github.com/dave/kerr"
 
 func foo() {
 	fmt.Sprint("")

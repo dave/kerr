@@ -3,7 +3,7 @@ package ksrc
 import (
 	"testing"
 
-	"github.com/davelondon/ktest/assert"
+	"github.com/dave/ktest/assert"
 )
 
 func TestIsId(t *testing.T) {

@@ -11,7 +11,7 @@ import (
 
 	"bytes"
 
-	"github.com/davelondon/kerr"
+	"github.com/dave/kerr"
 )
 
 func Process(filename string, in []byte) (out []byte, err error) {

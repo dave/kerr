@@ -14,10 +14,10 @@ import (
 
 	"os"
 
-	"github.com/davelondon/gopackages"
-	"github.com/davelondon/kerr"
-	"github.com/davelondon/kerr/kcov/scanner"
-	"github.com/davelondon/kerr/kcov/tester"
+	"github.com/dave/gopackages"
+	"github.com/dave/kerr"
+	"github.com/dave/kerr/kcov/scanner"
+	"github.com/dave/kerr/kcov/tester"
 	"golang.org/x/tools/cover"
 )
 

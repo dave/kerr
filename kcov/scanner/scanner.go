@@ -13,9 +13,9 @@ import (
 
 	"encoding/json"
 
-	"github.com/davelondon/gopackages"
-	"github.com/davelondon/kerr"
-	"github.com/davelondon/kerr/ksrc"
+	"github.com/dave/gopackages"
+	"github.com/dave/kerr"
+	"github.com/dave/kerr/ksrc"
 )
 
 // ke: {"package": {"notest": true}}
@@ -115,13 +115,13 @@ func scanFile(filename string) error {
 	for _, is := range file.Imports {
 		importPath, _ := strconv.Unquote(is.Path.Value)
 		switch importPath {
-		case "github.com/davelondon/kerr":
+		case "github.com/dave/kerr":
 			if is.Name != nil {
 				kerrName, _ = strconv.Unquote(is.Name.Name)
 			} else {
 				kerrName = "kerr"
 			}
-		case "github.com/davelondon/ktest/assert":
+		case "github.com/dave/ktest/assert":
 			if is.Name != nil {
 				assertName, _ = strconv.Unquote(is.Name.Name)
 			} else {
