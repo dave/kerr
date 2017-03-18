@@ -15,7 +15,7 @@ func formatLocation(e Struct) string {
 func getRelPath(filePath string) string {
 	wd, err := os.Getwd()
 	if err != nil {
-		// ke: {"block": {"notest": true}}
+		// notest
 		return filePath
 	}
 	out, err := filepath.Rel(wd, filePath)
