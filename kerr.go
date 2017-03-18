@@ -38,7 +38,7 @@ type Interface interface {
 }
 
 // New creates a new kerr.Struct
-func New(id string, format string, args ...interface{}) Struct {
+func New(id string, format string, args ...interface{}) error {
 	allArgs := append(
 		[]interface{}{format},
 		args...,
@@ -47,11 +47,11 @@ func New(id string, format string, args ...interface{}) Struct {
 }
 
 // Wrap wraps an error in a kerr.Struct
-func Wrap(id string, inner error, descriptionFormatAndArgs ...interface{}) Struct {
+func Wrap(id string, inner error, descriptionFormatAndArgs ...interface{}) error {
 	return get(id, inner, descriptionFormatAndArgs...)
 }
 
-func get(id string, inner error, descriptionFormatAndArgs ...interface{}) Struct {
+func get(id string, inner error, descriptionFormatAndArgs ...interface{}) error {
 
 	description := ""
 	if len(descriptionFormatAndArgs) == 1 {

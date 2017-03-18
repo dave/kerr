@@ -11,7 +11,7 @@ import (
 
 func TestErr(t *testing.T) {
 	e := kerr.New("FITIHGYHTR", "b %s", "c")
-	assert.Equal(t, "\nFITIHGYHTR error in kerr_ext_test.go:13 TestErr: b c.\n", e.Error())
+	assert.Equal(t, "\nFITIHGYHTR error in kerr_ext_test.go:13 TestErr: b c\n", e.Error())
 
 	e = kerr.Wrap("LBDLIDLDPE", fmt.Errorf("a"))
 	assert.Equal(t, "\nLBDLIDLDPE error in kerr_ext_test.go:16 TestErr: \na", e.Error())
@@ -30,7 +30,7 @@ func TestErr(t *testing.T) {
 	assert.Equal(t, "\nOHUKDAEMPT error in kerr_ext_test.go:29 TestErr: \na", e.Error())
 
 	e = kerr.New("TUPDJYPRNU", "b")
-	assert.Equal(t, "TUPDJYPRNU", e.ErrorId())
+	assert.Equal(t, "TUPDJYPRNU", e.(kerr.Struct).ErrorId())
 
 }
 
@@ -49,7 +49,7 @@ type TestError struct {
 
 func TestCustomError(t *testing.T) {
 
-	inner := TestError{Struct: kerr.New("JOUYKMBSBU", "b"), Message: "c"}
+	inner := TestError{Struct: kerr.New("JOUYKMBSBU", "b").(kerr.Struct), Message: "c"}
 	outer := kerr.Wrap("GJXHQCHGUO", inner)
 	source := kerr.Source(outer)
 	_, ok := source.(TestError)
